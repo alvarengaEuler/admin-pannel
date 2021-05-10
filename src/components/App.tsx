@@ -2,6 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../contexts/AuthContext";
 import Signup from "./Signup";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -9,11 +10,15 @@ function App() {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <AuthProvider>
-        <div className="w-100" style={{ maxWidth: "400px" }}>
-          <Signup />
-        </div>
-      </AuthProvider>
+      <div className="w-100" style={{ maxWidth: "400px" }}>
+        <Router>
+          <AuthProvider>
+            <Switch>
+              <Route path="/signup" component={Signup} />
+            </Switch>
+          </AuthProvider>
+        </Router>
+      </div>
     </Container>
   );
 }
