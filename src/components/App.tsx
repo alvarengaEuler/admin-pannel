@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import { AuthProvider } from "../contexts/AuthContext";
 import Signup from "./Signup";
 
 function App() {
@@ -8,9 +9,11 @@ function App() {
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
-        <Signup />
-      </div>
+      <AuthProvider>
+        <div className="w-100" style={{ maxWidth: "400px" }}>
+          <Signup />
+        </div>
+      </AuthProvider>
     </Container>
   );
 }
